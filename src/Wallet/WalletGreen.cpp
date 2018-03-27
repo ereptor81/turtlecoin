@@ -2191,6 +2191,10 @@ size_t WalletGreen::validateSaveAndSendTransaction(const ITransactionReader& tra
   rollbackAddingUnconfirmedTransaction.cancel();
   rollbackTransactionInsertion.cancel();
 
+  Crypto::SecretKey txnKey;
+  transaction.getTransactionSecretKey(txnKey);
+  std::cout << "Txn Private Key: " << Common::podToHex(txnKey) << "\n";
+
   return transactionId;
 }
 
